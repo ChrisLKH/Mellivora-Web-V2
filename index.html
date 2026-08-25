@@ -719,11 +719,30 @@ img, video { display:block; max-width:100%; }
   .section-title { font-size:clamp(1.75rem, 7.5vw, 2.35rem); line-height:1.15; }
   .section-subtext { font-size:.95rem; line-height:1.75; }
 
-  /* Section 1: Full-width button on mobile */
-  .doctrine-lead { font-size:1.15rem; line-height:1.6; }
-  .doctrine-body { font-size:.92rem; line-height:1.8; }
-  .doctrine-actions { width:100%; }
-  .doctrine-actions .btn-primary { width:100%; }
+  /* Section 1: Full-width stacked layout on mobile */
+  .doctrine-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+  .doctrine-left {
+    gap: 1.75rem;
+  }
+  .doctrine-lead {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+  .btn-primary {
+    width: 100%;
+  }
+  .badger-callout {
+    padding: 1.6rem 1.35rem;
+    border-top: 2px solid var(--amber);
+  }
+  .badger-text {
+    font-size: .92rem;
+    line-height: 1.75;
+  }
 
   /* Section 2: Connected Vertical Timeline on Mobile */
   .framework-pipeline {
