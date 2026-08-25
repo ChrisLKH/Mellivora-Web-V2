@@ -230,35 +230,126 @@ img, video { display:block; max-width:100%; }
 }
 
 /* ============================================================
-   SECTION 1: CORE DOCTRINE (Seamless 2-Column Banner)
+   SECTION 1: CORE DOCTRINE (Redesigned Balanced Showcase)
    ============================================================ */
 .doctrine-grid {
   display:grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap:clamp(2.5rem, 7vw, 5.5rem);
-  align-items:start;
+  grid-template-columns: 1.15fr 1fr;
+  gap:clamp(2.5rem, 6vw, 5rem);
+  align-items:stretch;
+}
+
+.doctrine-left {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 .doctrine-lead {
   font-family:var(--font-display);
-  font-size:clamp(1.2rem, 2.2vw, 1.55rem);
-  font-weight:400; line-height:1.55; color:var(--text-primary);
+  font-size:clamp(1.2rem, 2vw, 1.5rem);
+  font-weight:400;
+  line-height:1.55;
+  color:var(--text-primary);
+  margin-bottom:1.25rem;
 }
-.doctrine-body {
-  font-size:clamp(.95rem, 1.6vw, 1.05rem);
-  font-weight:300; line-height:1.9; color:var(--text-secondary);
+.doctrine-body-text {
+  font-size:clamp(.92rem, 1.5vw, 1.02rem);
+  font-weight:300;
+  line-height:1.8;
+  color:var(--text-secondary);
+  margin-bottom:2rem;
 }
-.doctrine-body p { margin-bottom:1.5rem; }
-.doctrine-actions { margin-top:2.25rem; }
+
+/* Premium Protocol Card */
+.badger-callout {
+  background:linear-gradient(145deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.01) 100%);
+  border:1px solid rgba(255,255,255,0.07);
+  border-top:2px solid var(--amber);
+  padding:clamp(1.75rem, 3.5vw, 2.5rem);
+  border-radius:3px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  transition:border-color .3s ease, transform .3s ease;
+}
+.badger-callout:hover {
+  border-color:rgba(232,155,45,0.35);
+  transform:translateY(-2px);
+}
+
+.badger-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:1.25rem;
+}
+.badger-badge {
+  font-family:var(--font-mono);
+  font-size:.65rem;
+  letter-spacing:.25em;
+  color:var(--amber);
+  font-weight:500;
+}
+.badger-icon {
+  font-family:var(--font-mono);
+  font-size:.6rem;
+  color:var(--text-muted);
+  letter-spacing:.15em;
+}
+
+.badger-text {
+  font-size:clamp(.88rem, 1.4vw, .95rem);
+  line-height:1.8;
+  color:var(--text-secondary);
+  margin-bottom:1.5rem;
+}
+.badger-text em {
+  color:var(--text-primary);
+  font-style:normal;
+  font-weight:400;
+}
+
+.badger-pillars {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:.75rem;
+  padding-top:1.25rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.pillar-item {
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  letter-spacing:.12em;
+  color:var(--text-muted);
+  text-transform:uppercase;
+  line-height:1.4;
+}
+.pillar-item span {
+  display:block;
+  color:var(--text-primary);
+  font-weight:500;
+  margin-bottom:.2rem;
+}
 
 .btn-primary {
-  display:inline-flex; align-items:center; justify-content:center; gap:.75rem;
-  font-family:var(--font-display); font-size:.82rem; font-weight:500;
-  letter-spacing:.18em; text-transform:uppercase;
-  color:var(--bg-void); background:var(--amber);
-  padding:1.05rem clamp(1.75rem,4vw,2.5rem); text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.75rem;
+  font-family:var(--font-display);
+  font-size:.82rem;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--bg-void);
+  background:var(--amber);
+  padding:1.05rem clamp(1.75rem,4vw,2.5rem);
+  text-decoration:none;
   transition:background .25s ease, transform .2s ease, box-shadow .25s ease;
   box-shadow: 0 4px 24px var(--amber-glow);
   min-height:52px;
+  align-self:flex-start;
 }
 .btn-primary:hover {
   background:var(--amber-hover);
@@ -270,34 +361,97 @@ img, video { display:block; max-width:100%; }
 }
 
 /* ============================================================
-   SECTION 2: FRAMEWORK (Sequential Timeline)
+   SECTION 2: FRAMEWORK (Connected Tactical Pipeline)
    ============================================================ */
-.framework-timeline {
+.framework-pipeline {
   display:grid;
   grid-template-columns: repeat(5, 1fr);
-  gap:1.5rem;
-  margin-top:clamp(3rem, 7vw, 4.5rem);
-}
-.framework-card {
-  background:var(--bg-card);
-  padding:clamp(1.75rem, 3.5vw, 2.25rem) clamp(1.25rem, 2.5vw, 1.75rem);
-  transition:background .35s ease, transform .3s ease;
+  gap:1.25rem;
+  margin-top:clamp(3.5rem, 8vw, 5rem);
   position:relative;
 }
-.framework-card:hover {
+
+.pipeline-track {
+  position:absolute;
+  top:16px;
+  left:2rem;
+  right:2rem;
+  height:1px;
+  background:linear-gradient(to right, 
+    var(--amber) 0%, 
+    rgba(232,155,45,0.4) 50%, 
+    rgba(232,155,45,0.15) 100%);
+  z-index:1;
+  pointer-events:none;
+}
+
+.pipeline-step {
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  transition:transform .3s ease;
+}
+.pipeline-step:hover {
+  transform:translateY(-4px);
+}
+
+.step-node {
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  margin-bottom:1.5rem;
+}
+
+.node-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--bg-void);
+  border:2px solid var(--amber);
+  box-shadow:0 0 12px var(--amber);
+  flex-shrink:0;
+  transition:background .25s ease, transform .25s ease;
+}
+.pipeline-step:hover .node-dot {
+  background:var(--amber);
+  transform:scale(1.3);
+}
+
+.node-num {
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.2em;
+  color:var(--amber);
+  font-weight:500;
+}
+
+.step-content {
+  background:var(--bg-card);
+  padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 2vw, 1.6rem);
+  flex:1 1 auto;
+  border-radius:2px;
+  transition:background .35s ease, border-color .35s ease;
+  border:1px solid transparent;
+}
+.pipeline-step:hover .step-content {
   background:var(--bg-card-hover);
-  transform:translateY(-3px);
+  border-color:rgba(232,155,45,0.25);
 }
-.step-number {
-  font-family:var(--font-mono); font-size:.75rem; letter-spacing:.25em;
-  color:var(--amber); margin-bottom:1.25rem;
-}
+
 .step-title {
-  font-family:var(--font-display); font-size:1.05rem; font-weight:600;
-  line-height:1.35; margin-bottom:.85rem; color:var(--text-primary);
+  font-family:var(--font-display);
+  font-size:1.05rem;
+  font-weight:600;
+  line-height:1.35;
+  margin-bottom:.75rem;
+  color:var(--text-primary);
 }
 .step-desc {
-  font-size:.88rem; font-weight:300; line-height:1.75; color:var(--text-secondary);
+  font-size:.86rem;
+  font-weight:300;
+  line-height:1.75;
+  color:var(--text-secondary);
 }
 
 /* ============================================================
@@ -305,7 +459,7 @@ img, video { display:block; max-width:100%; }
    ============================================================ */
 .ecosystem-grid {
   display:grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap:1.5rem;
   margin-top:clamp(3rem, 7vw, 4.5rem);
 }
@@ -314,23 +468,34 @@ img, video { display:block; max-width:100%; }
   padding:clamp(2.25rem, 4vw, 2.75rem);
   transition:background .35s ease, transform .3s ease;
   position:relative;
+  border-radius:2px;
 }
 .ecosystem-card:hover {
   background:var(--bg-card-hover);
   transform:translateY(-3px);
 }
-.ecosystem-card.col-6 { grid-column: span 6; }
-.ecosystem-card.col-4 { grid-column: span 4; }
+.ecosystem-card.col-6 { grid-column: span 3; }
+.ecosystem-card.col-4 { grid-column: span 2; }
 
 .card-tag {
-  font-family:var(--font-mono); font-size:.65rem; letter-spacing:.2em;
-  color:var(--amber); margin-bottom:1.25rem; display:inline-block;
+  font-family:var(--font-mono);
+  font-size:.65rem;
+  letter-spacing:.2em;
+  color:var(--amber);
+  margin-bottom:1.25rem;
+  display:inline-block;
 }
 .card-title {
-  font-family:var(--font-display); font-size:1.22rem; font-weight:500; margin-bottom:.85rem;
+  font-family:var(--font-display);
+  font-size:1.22rem;
+  font-weight:500;
+  margin-bottom:.85rem;
 }
 .card-desc {
-  font-size:.9rem; font-weight:300; line-height:1.8; color:var(--text-secondary);
+  font-size:.9rem;
+  font-weight:300;
+  line-height:1.8;
+  color:var(--text-secondary);
 }
 
 /* ============================================================
@@ -387,17 +552,100 @@ img, video { display:block; max-width:100%; }
 }
 
 /* ============================================================
-   RESPONSIVE DESIGN (Tablet)
+   RESPONSIVE DESIGN (Tablets & Medium Screens: 641px - 1024px)
    ============================================================ */
-@media (max-width: 1100px) {
-  .framework-timeline { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 641px) and (max-width: 1024px) {
+  .cinematic-wrapper { height:380vh; }
+  .cinematic-overlay {
+    width:min(600px, 80%);
+    bottom:max(10vh, calc(env(safe-area-inset-bottom) + 2rem));
+  }
+  .overlay-headline { font-size:clamp(2rem, 5vw, 2.75rem); }
+
+  /* Tablet Doctrine */
+  .doctrine-grid {
+    grid-template-columns: 1fr;
+    gap:2.5rem;
+  }
+  .badger-callout {
+    padding:2.25rem;
+  }
+
+  /* Tablet Framework: Connected Vertical Timeline with illuminated rail */
+  .framework-pipeline {
+    grid-template-columns: 1fr;
+    gap:1.5rem;
+    position:relative;
+    padding-left:2.5rem;
+    margin-top:3.5rem;
+  }
+  .framework-pipeline::before {
+    content:'';
+    position:absolute;
+    left:10px;
+    top:1.5rem;
+    bottom:1.5rem;
+    width:2px;
+    background:linear-gradient(to bottom, 
+      var(--amber) 0%, 
+      rgba(232,155,45,0.4) 70%, 
+      transparent 100%);
+  }
+  .pipeline-track { display:none; }
+  .pipeline-step {
+    padding:0;
+    position:relative;
+  }
+  .step-node {
+    margin-bottom:.75rem;
+  }
+  .node-dot {
+    position:absolute;
+    left:-2.5rem;
+    top:.35rem;
+    width:12px;
+    height:12px;
+    transform:translateX(5px);
+    background:var(--bg-void);
+    border:2px solid var(--amber);
+    box-shadow:0 0 14px var(--amber);
+  }
+  .step-content {
+    padding:1.75rem 1.6rem;
+  }
+
+  /* Tablet Ecosystem: Balanced 2-Column Grid */
+  .ecosystem-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap:1.25rem;
+  }
+  .ecosystem-card.col-6, .ecosystem-card.col-4 {
+    grid-column: span 1;
+  }
+  .ecosystem-card:last-child {
+    grid-column: span 2;
+  }
+
+  .founder-container::before { left:-1.25rem; }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .framework-pipeline {
+    gap:1rem;
+  }
+  .step-content {
+    padding:1.25rem 1rem;
+  }
+  .step-title {
+    font-size:.95rem;
+  }
+  .step-desc {
+    font-size:.82rem;
+  }
 }
 
 @media (max-width: 1024px) {
   .nav-links { gap:1.75rem; }
-  .cinematic-overlay { width:min(520px, 70%); bottom:14vh; }
-  .doctrine-grid { grid-template-columns:1fr; gap:2rem; }
-  .ecosystem-card.col-6, .ecosystem-card.col-4 { grid-column: span 6; }
 }
 
 /* ============================================================
@@ -478,29 +726,32 @@ img, video { display:block; max-width:100%; }
   .doctrine-actions .btn-primary { width:100%; }
 
   /* Section 2: Connected Vertical Timeline on Mobile */
-  .framework-timeline {
+  .framework-pipeline {
     grid-template-columns: 1fr;
-    gap:1rem;
+    gap:1.25rem;
     position:relative;
     padding-left:1.5rem;
     margin-top:2.5rem;
   }
-  .framework-timeline::before {
+  .framework-pipeline::before {
     content:''; position:absolute; left:.5rem; top:1rem; bottom:1rem; width:1px;
     background:linear-gradient(to bottom, var(--amber) 0%, rgba(232,155,45,0.2) 80%, transparent 100%);
   }
-  .framework-card {
-    padding:1.5rem 1.25rem;
-    border-radius:2px;
+  .pipeline-track { display:none; }
+  .pipeline-step {
+    padding: 0;
   }
-  .framework-card::before {
-    content:''; position:absolute; left:-1.5rem; top:1.85rem; width:7px; height:7px;
-    border-radius:50%; background:var(--amber);
-    box-shadow: 0 0 10px var(--amber);
+  .step-node {
+    margin-bottom:.5rem;
+  }
+  .node-dot {
+    position:absolute; left:-1.5rem; top:.35rem; width:8px; height:8px;
     transform:translateX(-3px);
   }
-  .step-number { margin-bottom:.5rem; font-size:.7rem; }
-  .step-title { font-size:1.05rem; margin-bottom:.5rem; }
+  .step-content {
+    padding:1.4rem 1.25rem;
+  }
+  .step-title { font-size:1.02rem; margin-bottom:.45rem; }
   .step-desc { font-size:.86rem; line-height:1.7; }
 
   /* Section 3: Ecosystem Mobile Cards */
@@ -598,19 +849,19 @@ img, video { display:block; max-width:100%; }
 
     <div class="overlay-layer">
       <div class="cinematic-overlay visible" data-show="0.00" data-hide="0.28">
-        <div class="overlay-tag">01 // INITIATION</div>
-        <h1 class="overlay-headline">Act Before<br>the Loss.</h1>
-        <p class="overlay-subtext">Traditional systems document the aftermath. MELLIVORA detects and reacts the millisecond the perimeter is compromised.</p>
+        <div class="overlay-tag">01 // INTRUSION INTERCEPT</div>
+        <h1 class="overlay-headline">Don't Just Watch<br>It Happen.</h1>
+        <p class="overlay-subtext">We confront and contain perimeter breaches before loss occurs.</p>
       </div>
       <div class="cinematic-overlay" data-show="0.34" data-hide="0.62">
-        <div class="overlay-tag">02 // GROUND INTERCEPT</div>
-        <div class="overlay-headline">Autonomous Ground<br>Mobilization.</div>
-        <p class="overlay-subtext">Quadruped units deploy instantly—placing physical countermeasures directly in the path of the intrusion.</p>
+        <div class="overlay-tag">02 // AUTONOMOUS K9</div>
+        <div class="overlay-headline">Ground<br>Mobilization.</div>
+        <p class="overlay-subtext">Quadruped units standing directly between your assets and the intrusion.</p>
       </div>
       <div class="cinematic-overlay" data-show="0.68" data-hide="0.98">
-        <div class="overlay-tag">03 // CONTAINMENT</div>
-        <div class="overlay-headline">Physical Standoff.<br>Verified Defense.</div>
-        <p class="overlay-subtext">Synchronized telemetry and ground defense hold the line long before law enforcement arrives.</p>
+        <div class="overlay-tag">03 // ON-CAMERA EDGE AI</div>
+        <h1 class="overlay-headline">Total Facility<br>Intelligence.</h1>
+        <p class="overlay-subtext">On-camera AI with instant smart detections, automated alarm triggers, and real-time facial recognition—processed securely on your local infrastructure.</p>
       </div>
     </div>
 
@@ -621,50 +872,85 @@ img, video { display:block; max-width:100%; }
 <!-- SECTION 1: CORE DOCTRINE -->
 <section class="section doctrine-section" id="doctrine">
   <div class="doctrine-grid">
-    <div>
-      <h2 class="section-title">Fearless Protection.</h2>
-      <p class="doctrine-lead">The critical flaw in traditional security is time. By the time someone reviews the footage, the incident is over.</p>
-      <div class="doctrine-actions">
-        <a href="#contact" class="btn-primary">Schedule a Consultation &rarr;</a>
+    <div class="doctrine-left">
+      <div>
+        <h2 class="section-title">Fearless Protection.</h2>
+        <p class="doctrine-lead">The critical flaw in traditional security is time. By the time someone reviews the footage, the incident is over.</p>
       </div>
+      <a href="#contact" class="btn-primary">Schedule a Consultation &rarr;</a>
     </div>
-    <div class="doctrine-body">
-      <p>The MELLIVORA Framework shifts your operational posture from passive observation to coordinated, physical intervention.</p>
-      <p>Inspired by the awareness and absolute persistence of the Honey Badger, we don't just send alerts. When a threat is verified, we deploy autonomous physical countermeasures to stand directly between your assets and the intrusion.</p>
+
+    <!-- Streamlined Honey Badger Protocol Card -->
+    <div class="badger-callout">
+      <div class="badger-header">
+        <span class="badger-badge">// THE HONEY BADGER PROTOCOL</span>
+      </div>
+      <p class="badger-text">Inspired by the acute situational awareness and absolute persistence of <em>Mellivora capensis</em>, we engineer autonomous physical countermeasures that stand directly between your assets and the intrusion.</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 2: THE OPERATIONAL LIFECYCLE -->
+<!-- SECTION 2: THE OPERATIONAL TIMELINE PIPELINE -->
 <section class="section framework-section" id="framework">
   <h2 class="section-title">From Observation to Intervention.</h2>
-  <p class="section-subtext">A continuous chain of custody that bridges digital threat detection and physical ground defense with zero processing lag.</p>
+  <p class="section-subtext">A continuous, automated chain of custody that bridges digital threat detection and physical ground defense in milliseconds.</p>
 
-  <div class="framework-timeline">
-    <div class="framework-card">
-      <div class="step-number">01</div>
-      <h3 class="step-title">Observation &amp; Recording</h3>
-      <p class="step-desc">Instant capture of high-fidelity optical and thermal telemetry at the perimeter edge.</p>
+  <div class="framework-pipeline">
+    <div class="pipeline-track"></div>
+    
+    <div class="pipeline-step">
+      <div class="step-node">
+        <span class="node-dot"></span>
+        <span class="node-num">01</span>
+      </div>
+      <div class="step-content">
+        <h3 class="step-title">Observation &amp; Recording</h3>
+        <p class="step-desc">Instant capture of high-fidelity optical and thermal telemetry at the perimeter edge.</p>
+      </div>
     </div>
-    <div class="framework-card">
-      <div class="step-number">02</div>
-      <h3 class="step-title">Risk Identification</h3>
-      <p class="step-desc">Onboard neural systems parse pixel anomalies, distinguishing authorized personnel from threats in milliseconds.</p>
+
+    <div class="pipeline-step">
+      <div class="step-node">
+        <span class="node-dot"></span>
+        <span class="node-num">02</span>
+      </div>
+      <div class="step-content">
+        <h3 class="step-title">Risk Identification</h3>
+        <p class="step-desc">Onboard neural systems parse pixel anomalies, distinguishing authorized personnel from threats in milliseconds.</p>
+      </div>
     </div>
-    <div class="framework-card">
-      <div class="step-number">03</div>
-      <h3 class="step-title">Verification &amp; Escalation</h3>
-      <p class="step-desc">Uninterrupted oversight validates threat vectors, triggering escalation protocols with zero cloud lag.</p>
+
+    <div class="pipeline-step">
+      <div class="step-node">
+        <span class="node-dot"></span>
+        <span class="node-num">03</span>
+      </div>
+      <div class="step-content">
+        <h3 class="step-title">Verification &amp; Escalation</h3>
+        <p class="step-desc">Uninterrupted oversight validates threat vectors, triggering escalation protocols with zero cloud lag.</p>
+      </div>
     </div>
-    <div class="framework-card">
-      <div class="step-number">04</div>
-      <h3 class="step-title">Coordinated Intervention</h3>
-      <p class="step-desc">Immediate deployment of acoustic deterrents and autonomous quadruped units to intercept the threat.</p>
+
+    <div class="pipeline-step">
+      <div class="step-node">
+        <span class="node-dot"></span>
+        <span class="node-num">04</span>
+      </div>
+      <div class="step-content">
+        <h3 class="step-title">Coordinated Intervention</h3>
+        <p class="step-desc">Immediate deployment of acoustic deterrents and autonomous quadruped units to intercept the threat.</p>
+      </div>
     </div>
-    <div class="framework-card">
-      <div class="step-number">05</div>
-      <h3 class="step-title">Integrated Response</h3>
-      <p class="step-desc">Automated execution of tactical SOPs secures the perimeter and routes containment alerts to human responders.</p>
+
+    <div class="pipeline-step">
+      <div class="step-node">
+        <span class="node-dot"></span>
+        <span class="node-num">05</span>
+      </div>
+      <div class="step-content">
+        <h3 class="step-title">Integrated Response</h3>
+        <p class="step-desc">Automated execution of tactical SOPs secures the perimeter and routes containment alerts to human responders.</p>
+      </div>
     </div>
   </div>
 </section>
