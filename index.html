@@ -853,11 +853,11 @@ img, video { display:block; max-width:100%; }
     <div class="video-stage">
       <video class="cinematic-video active" muted playsinline preload="auto"
              poster="https://pub-e706d462eeaf467cbce7ccea80350c5f.r2.dev/start-frame-1.png" 
-             src="https://pub-e706d462eeaf467cbce7ccea80350c5f.r2.dev/mellivora-clip1-v1%20-%20REVERSE.mp4"></video>
+             src="https://pub-e706d462eeaf467cbce7ccea80350c5f.r2.dev/mellivora-clip1-v2-intra.mp4"></video>
       <video class="cinematic-video" muted playsinline preload="auto"
-             src="https://pub-e706d462eeaf467cbce7ccea80350c5f.r2.dev/mellivora-clip2-v1.mp4"></video>
+             src="https://pub-e706d462eeaf467cbce7ccea80350c5f.r2.dev/mellivora-clip2-v2-intra.mp4"></video>
       <video class="cinematic-video" muted playsinline preload="auto"
-             src="https://pub-e706d462eeaf467cbce7ccea80350c5f.r2.dev/mellivora-clip3-v1.mp4"></video>
+             src="https://pub-e706d462eeaf467cbce7ccea80350c5f.r2.dev/mellivora-clip3-v2-intra.mp4"></video>
 
       <div class="scrim scrim-left"></div>
       <div class="scrim scrim-top"></div>
@@ -1151,26 +1151,23 @@ img, video { display:block; max-width:100%; }
       var local = span > 0 ? (progress - clip.start) / span : 0;
       var targetTime = clamp(local, 0, 1) * (v.duration - 0.04);
 
-      if (Math.abs(v.currentTime - targetTime) > 0.015) {
-        if ('fastSeek' in v && typeof v.fastSeek === 'function') {
-          try { v.fastSeek(targetTime); } catch(e) { v.currentTime = targetTime; }
-        } else {
-          v.currentTime = targetTime;
-        }
+      // Skip while a seek is decoding so seeks don't queue up; no fastSeek (it snaps to keyframes)
+      if (!v.seeking && Math.abs(v.currentTime - targetTime) > 0.015) {
+        v.currentTime = targetTime;
       }
     }
 
     // Pre-seek neighboring video streams so they never start on an unbuffered frame
     var nextIdx = idx + 1;
     if (nextIdx < videos.length && videos[nextIdx] && videos[nextIdx].readyState >= 2) {
-      if (videos[nextIdx].currentTime > 0.05 && progress < CLIPS[nextIdx].start) {
+      if (!videos[nextIdx].seeking && videos[nextIdx].currentTime > 0.05 && progress < CLIPS[nextIdx].start) {
         try { videos[nextIdx].currentTime = 0; } catch(e){}
       }
     }
     var prevIdx = idx - 1;
     if (prevIdx >= 0 && videos[prevIdx] && videos[prevIdx].readyState >= 2 && videos[prevIdx].duration) {
       var endT = videos[prevIdx].duration - 0.05;
-      if (Math.abs(videos[prevIdx].currentTime - endT) > 0.1 && progress > CLIPS[prevIdx].end) {
+      if (!videos[prevIdx].seeking && Math.abs(videos[prevIdx].currentTime - endT) > 0.1 && progress > CLIPS[prevIdx].end) {
         try { videos[prevIdx].currentTime = endT; } catch(e){}
       }
     }
